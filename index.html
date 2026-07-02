@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新品调研日报 — 儿童餐椅 / 成长椅 / 增高椅</title>
+<style>
+  :root { --highchair: #E65100; --growing: #00695C; --booster: #4527A0; --bg: #FAFAFA; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Segoe UI', sans-serif; background: var(--bg); color: #333; line-height: 1.6; }
+  header { background: linear-gradient(135deg, #263238, #37474F); color: #FFF; padding: 40px 24px; text-align: center; }
+  header h1 { font-size: 2rem; margin-bottom: 6px; }
+  header p { opacity: .7; font-size: .95rem; }
+  .container { max-width: 800px; margin: 0 auto; padding: 24px; }
+  .latest { background: linear-gradient(135deg, #FFF8E1, #FFF3E0); border-radius: 12px; padding: 24px; margin-bottom: 32px; text-align: center; border: 2px solid #FFE0B2; }
+  .latest h2 { font-size: 1.1rem; color: #E65100; margin-bottom: 12px; }
+  .latest .date { font-size: 1.5rem; font-weight: 700; color: #BF360C; }
+  .latest a { display: inline-block; margin-top: 12px; padding: 10px 28px; background: #E65100; color: #FFF; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background .2s; }
+  .latest a:hover { background: #BF360C; }
+  .nav-level { margin-bottom: 28px; }
+  .nav-level h3 { font-size: 1.05rem; color: #546E7A; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .nav-level h3::before { content: ''; display: inline-block; width: 4px; height: 18px; background: #FFB74D; border-radius: 2px; }
+  .nav-items { display: flex; flex-wrap: wrap; gap: 8px; }
+  .nav-item { display: inline-block; padding: 8px 16px; background: #FFF; border: 1px solid #E0E0E0; border-radius: 8px; text-decoration: none; color: #37474F; font-size: .88rem; transition: all .2s; }
+  .nav-item:hover { border-color: #FFB74D; color: #E65100; box-shadow: 0 2px 8px rgba(230,81,0,.1); }
+  .nav-item.active { background: #E65100; color: #FFF; border-color: #E65100; }
+  .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 32px; }
+  .cat-card { background: #FFF; border-radius: 12px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,.05); text-align: center; }
+  .cat-card .icon { font-size: 2.2rem; margin-bottom: 8px; }
+  .cat-card h4 { font-size: 1rem; margin-bottom: 4px; }
+  .cat-card p { color: #78909C; font-size: .82rem; }
+  footer { text-align: center; padding: 32px; color: #999; font-size: .78rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🔍 新品调研日报</h1>
+  <p>儿童餐椅 · 成长椅 · 增高椅 — 每日新品跟踪</p>
+</header>
+
+<div class="container">
+
+<div class="latest">
+  <h2>📋 最新报告</h2>
+  <div class="date">2026年7月2日</div>
+  <p style="margin-top:6px;color:#78909C;font-size:.88rem">收录 14 款新品，来自天猫/Amazon/小红书/Mother&Baby</p>
+  <a href="reports/2026-07-02.html">查看报告 →</a>
+</div>
+
+<div class="nav-level">
+  <h3>📅 2026年</h3>
+  <div class="nav-items">
+    <a class="nav-item" href="#">7月</a>
+    <a class="nav-item" href="#">6月</a>
+    <a class="nav-item" href="#">5月</a>
+    <a class="nav-item" href="#">4月</a>
+    <a class="nav-item" href="#">3月</a>
+  </div>
+</div>
+
+<div class="nav-level">
+  <h3>7月报告</h3>
+  <div class="nav-items">
+    <a class="nav-item active" href="reports/2026-07-02.html">7月2日</a>
+  </div>
+</div>
+
+<div class="categories">
+  <div class="cat-card">
+    <div class="icon">🍽</div>
+    <h4>儿童餐椅</h4>
+    <p>便携折叠 · 多功能 · 护脊 · 易清洁</p>
+  </div>
+  <div class="cat-card">
+    <div class="icon">🌱</div>
+    <h4>成长椅</h4>
+    <p>实木 · 多档调节 · 从婴儿坐到成年</p>
+  </div>
+  <div class="cat-card">
+    <div class="icon">📏</div>
+    <h4>增高椅</h4>
+    <p>便携折叠 · 可调节 · 外出神器</p>
+  </div>
+</div>
+
+</div>
+
+<footer>
+  数据来源: 天猫 · Amazon · 小红书 · 什么值得买 · Mother&amp;Baby · iF Design<br>
+  GitHub Pages: one-try-one.github.io/new-product-radar
+</footer>
+
+</body>
+</html>

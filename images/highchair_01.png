@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <defs><linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#FFF3E0"/><stop offset="100%" style="stop-color:#FFE0B2"/></linearGradient></defs>
+  <rect width="400" height="300" fill="url(#bg1)"/>
+  <rect x="50" y="60" width="300" height="180" rx="10" fill="#FFCC80" stroke="#E65100" stroke-width="2"/>
+  <text x="200" y="140" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#E65100">儿童餐椅 #1</text>
+  <text x="200" y="165" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#BF360C">卡曼 KC606</text>
+  <text x="200" y="185" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#BF360C">(截图暂不可用 — VM 未就绪)</text>
+</svg>
