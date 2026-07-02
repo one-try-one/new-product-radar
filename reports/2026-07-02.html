@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新品调研日报 · 2026年7月2日</title>
+<style>
+  :root { color-scheme: light; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #FEFAF6; color: #3D2C2C; line-height: 1.6; }
+  .container { max-width: 860px; margin: 0 auto; padding: 20px 20px 60px; }
+  .header { text-align: center; margin-bottom: 24px; }
+  .header h1 { font-size: 24px; font-weight: 700; color: #2D2420; }
+  .header .date { font-size: 13px; color: #A0928B; margin-top: 4px; }
+  .tabs { display: flex; gap: 6px; margin-bottom: 20px; border-bottom: 2px solid #F0E8E0; padding-bottom: 0; }
+  .tab { padding: 10px 20px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; background: none; color: #8B7E74; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.15s; }
+  .tab:hover { color: #5C4F49; }
+  .tab.active { color: #C26E24; border-bottom-color: #C26E24; font-weight: 600; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .summary-bar { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .summary-chip { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: #FFF; border: 1px solid #F0E8E0; color: #8B7E74; }
+  .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .product-card { background: #FFF; border: 1px solid #F0E8E0; border-radius: 14px; overflow: hidden; transition: box-shadow .2s; }
+  .product-card:hover { box-shadow: 0 4px 20px rgba(194,110,36,.08); }
+  .product-img { width: 100%; height: 160px; background: linear-gradient(135deg, #F5EFE8, #FFF8F0); display: flex; align-items: center; justify-content: center; color: #C5B9B0; font-size: 48px; }
+  .product-body { padding: 14px 16px; }
+  .product-rank { font-size: 11px; font-weight: 600; color: #C26E24; margin-bottom: 2px; }
+  .product-name { font-size: 15px; font-weight: 700; color: #2D2420; margin-bottom: 4px; }
+  .product-brand { font-size: 12px; color: #A0928B; margin-bottom: 6px; }
+  .product-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 8px; }
+  .tag { font-size: 10px; padding: 2px 8px; border-radius: 6px; background: #F5EFE8; color: #8B7E74; }
+  .tag.price { background: #FFF0E5; color: #C26E24; font-weight: 600; }
+  .tag.country { background: #E8F0F5; color: #5C7A8B; }
+  .product-desc { font-size: 12px; color: #6B5E55; line-height: 1.5; margin-bottom: 8px; }
+  .product-source { font-size: 11px; }
+  .product-source a { color: #C26E24; text-decoration: none; }
+  .product-source a:hover { text-decoration: underline; }
+  .back-link { display: inline-flex; align-items: center; gap: 4px; margin-bottom: 20px; font-size: 13px; color: #C26E24; text-decoration: none; }
+  .back-link:hover { text-decoration: underline; }
+  .section-note { text-align: center; padding: 12px; background: #FFF8F0; border: 1px solid #FDD9B5; border-radius: 10px; font-size: 12px; color: #C26E24; margin-bottom: 14px; }
+  .stats-footer { text-align: center; margin-top: 32px; padding: 20px; background: #FFF; border: 1px solid #F0E8E0; border-radius: 16px; }
+  .stats-footer .stat-row { display: flex; justify-content: center; gap: 40px; }
+  .stats-footer .stat-num { font-size: 28px; font-weight: 800; color: #C26E24; }
+  .stats-footer .stat-label { font-size: 12px; color: #A0928B; margin-top: 2px; }
+  @media (max-width: 500px) {
+    .container { padding: 12px 12px 40px; }
+    .products { grid-template-columns: 1fr; }
+    .tabs { overflow-x: auto; white-space: nowrap; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="../index.html">← 返回首页</a>
+  <div class="header">
+    <h1>🔍 新品调研日报</h1>
+    <div class="date">2026年7月2日 · 周四 · 采集时间 11:00</div>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('highchair')">🪑 儿童餐椅 (6)</button>
+    <button class="tab" onclick="switchTab('growing')">🌱 成长椅 (5)</button>
+    <button class="tab" onclick="switchTab('booster')">📏 增高椅 (6)</button>
+  </div>
+  <div class="section-note">📸 截图未就绪（agent-browser 不可用），点击来源链接查看商品详情</div>
+
+  <!-- ===== 儿童餐椅 ===== -->
+  <div class="panel active" id="panel-highchair">
+    <div class="summary-bar">
+      <span class="summary-chip">🛒 天猫/京东 · Amazon · 小红书</span>
+      <span class="summary-chip">💰 ¥59 — ¥2,299</span>
+      <span class="summary-chip">🌍 中/挪/美</span>
+    </div>
+    <div class="products">
+
+<div class="product-card"><div class="product-img">🪑</div><div class="product-body">
+<div class="product-rank">TOP 1 · 品质之选</div>
+<div class="product-name">百变餐椅（升级款）</div>
+<div class="product-brand">babycare · 🇨🇳 中国</div>
+<div class="product-tags"><span class="tag price">¥599</span><span class="tag">单手开餐盘</span><span class="tag">季风灰新款</span></div>
+<div class="product-desc">创新单手开餐盘设计，抱娃操作更方便。2026升级款季风灰配色，品牌口碑扎实。</div>
+<div class="product-source">📎 <a href="https://www.smzdm.com/p/177821221/" rel="nofollow" target="_blank">什么值得买</a></div>
+</div></div>
+
+<div class="product-card"><div class="product-img">🪑</div><div class="product-body">
+<div class="product-rank">TOP 2 · 小户型必备</div>
+<div class="product-name">二合一餐椅沙发</div>
+<div class="product-brand">英氏 YeeHoO · 🇨🇳 中国</div>
+<div class="product-tags"><span class="tag price">¥179-499</span><span class="tag">餐椅+沙发</span><span class="tag">6月-3岁+</span></div>
+<div class="product-desc">餐椅沙发双模式，防水防污一擦即净。加粗钢管+宽大底盘防侧翻，不闲置。</div>
+<div class="product-source">📎 <a href="https://post.smzdm.com/p/am97dz44/" rel="nofollow" target="_blank">什么值得买</a></div>
+</div></div>
+
+<div class="product-card"><div class="product-img">🪑</div><div class="product-body">
+<div class="product-rank">TOP 3 · 高性价比</div>
+<div class="product-name">多功能可升降餐椅</div>
+<div class="product-brand">曼龙 · 🇨🇳 中国</div>
+<div class="product-tags"><span class="tag price">¥239</span><span class="tag">升降调节</span><span class="tag">7月2日开售</span></div>
+<div class="product-desc">升降适配不同餐桌，今日正式开售，领券价239元竞争力强。</div>
+<div class="product-source">📎 <a href="https://www.smzdm.com/p/177814748/" rel="nofollow" target="_blank">什么值得买</a></div>
+</div></div>
+
+<div class="product-card"><div class="product-img">🪑</div><div class="product-body">
+<div class="product-rank">TOP 4 · 网红爆款</div>
+<div class="product-name">哈卡达多功能餐椅</div>
+<div class="product-brand">hagaday · 🇨🇳 中国</div>
+<div class="product-tags"><span class="tag price">¥600-800</span><span class="tag">好清理</span><span class="tag">多档调节</span></div>
+<div class="product-desc">食品级PP+加厚PU涂层，湿巾一抹即净。48-58cm多档调节，底盘超稳，小红书宝妈好评。</div>
+<div class="product-source">📎 <a href="https://jianghu.taobao.com/detail/47500_80005374" rel="nofollow" target="_blank">淘宝详情</a></div>
+</div></div>
+
+<div class="product-card"><div class="product-img">🪵</div><div class="product-body">
+<div class="product-rank">TOP 5 · 实木质感</div>
+<div class="product-name">肥象ZOSAN纯实木餐椅</div>
+<div class="product-brand">肥象 · 🇨🇳 中国</div>
+<div class="product-tags"><span class="tag price">¥300-400</span><span class="tag">纯榉木</span><span class="tag">可折叠</span></div>
+<div class="product-desc">纯榉木切片非贴皮，一键折叠秒变薄片。桌面三档可调，辅食用到幼儿园。</div>
+<div class="product-source">📎 <a href="https://jianghu.taobao.com/detail/47500_78356120" rel="nofollow" target="_blank">淘宝详情</a></div>
+</div></div>
+
+<div class="product-card"><div class="product-img">🌳</div><div class="product-body">
+<div class="product-rank">TOP 6 · 终身使用</div>
+<div class="product-name">Tripp Trapp 成长椅</div>
+<div class="product-brand">Stokke · 🇳🇴 挪威</div>
+<div class="product-tags"><span class="tag price">$189-249</span><span class="tag country">挪威</span><span class="tag">136kg承重</span></div>
+<div class="product-desc">欧洲山毛榉实木，从出生用到成人。座板+脚踏独立可调，1972年经典不衰。</div>
+<div class="product-source">📎 <a href="https://www.madeformums.com/reviews/best-highchairs/" rel="nofollow" target="_blank">MadeForMums</a></div>
+</div></div>
+
+    </div>
+  </div>
+
+  <!-- ===== 成长椅 ===== -->
+  <div class="panel" id="panel-growing">
+    <div class="summary-bar">
+      <span class="summary-chip">🛒 什么值得买 · Amazon</span>
+      <span class="summary-chip">💰 ¥800 — $349</span>
+      <span class="summary-chip">🌍 中/挪/荷/德</span>
+    </div>
+    <div class="products">
+
+<div class="product-card"><div class="product-img">💺</div><div class="product-body">
+<div class="product-rank">TOP 1 · 2026口碑之选</div>
+<div class="product-name">黑白调G6 学习椅</div>
+<div class="product-brand">黑白调 · 🇨🇳 中国</div>
+<div class="product-tags"><span class="tag price">¥1000-1500</span><span class="tag">重力追背</span><span class="tag">TUV认证</span></div>
+<div class="product-desc">重力感应自动追背技术，20cm大行程+15°弹性支撑。座高29-53cm无极升降，四级TUV认证气压杆。</div>
+<div class="product-source">📎 <a href="https://post.smzdm.com/p/al3n394g/" rel="nofollow" target="_blank">什么值得买横评</a></div>
+</div></div>
+
+<div class="product-card"><div class="product-img">💺</div><div class="product-body">
+<div class="product-rank">TOP 2 · 宽适大童</div>
+<div class="product-name">八九间Y5F</div>
+<div class="product-brand">八九间 · 🇨🇳 中国</div>
+<div class="product-tags"><span class="tag price">¥800-1200</span><span class="tag">45cm宽腰靠</span><span class="tag">300斤承重</span></div>
+<div class="product-desc">45cm宽大3D自适应腰靠，承重达300斤。七档气压调节，适合140cm+大童和青少年。</div>
+<div class="product-source">📎 <a href="https://post.smzdm.com/p/al3n394g/" rel="nofollow" target="_blank">什么值得买横评</a></div>
+</div></div>
+
+<div class="product-card"><div class="product-img">🌳</div><div class="product-body">
+<div class="product-rank">TOP 3 · 经典标杆</div>
+<div class="product-name">Tripp Trapp</div>
+<div class="product-brand">Stokke · 🇳🇴 挪威</div>
+<div class="product-tags"><span class="tag price">$189-249</span><span class="tag country">挪威</span><span class="tag">136kg</span></div>
+<div class="product-desc">全球成长椅标杆，座板/脚踏独立可调。从幼儿坐到成人，高残值二手价格坚挺。</div>
+<div class="product-source">📎 <a href="https://www.madeformums.com/reviews/best-highchairs/" rel="nofollow" target="_blank">MadeForMums</a></div>
+</div></div>
+
+<div class="product-card"><div class="product-img">🦒</div><div class="product-body">
+<div class="product-rank">TOP 4 · 免工具秒调</div>
+<div class="product-name">Bugaboo Giraffe</div>
+<div class="product-brand">Bugaboo · 🇳🇱 荷兰</div>
+<div class="product-tags"><span class="tag price">$299-349</span><span class="tag country">荷兰</span><span class="tag">9档脚踏</span></div>
+<div class="product-desc">9档脚踏+5档座板免工具秒调，仅重5kg。从出生到100kg，配件丰富可选。</div>
+<div class="product-source">📎 <a href="https://www.madeformums.com/reviews/best-highchairs/" rel="nofollow" target="_blank">MadeForMums</a></div>
+</div></div>
+
+<div class="product-card"><div class="product-img">🔧</div><div class="product-body">
+<div class="product-rank">TOP 5 · 终身设计</div>
+<div class="product-name">Cybex Lemo</div>
+<div class="product-brand">Cybex · 🇩🇪 德国</div>
+<div class="product-tags"><span class="tag price">$249-329</span><span class="tag country">德国</span><span class="tag">120kg</span></div>
+<div class="product-desc">无年龄限制高脚椅，从出生到成年。承重120kg，极简设计清洁方便。</div>
+<div class="product-source">📎 <a href="https://www.motherandbaby.com/reviews/highchairs/cybex-lemo-review/" rel="nofollow" target="_blank">Mother&amp;Baby</a></div>
+</div></div>
+
+    </div>
+  </div>
+
+  <!-- ===== 增高椅 ===== -->
+  <div class="panel" id="panel-booster">
+    <div class="summary-bar">
+      <span class="summary-chip">🛒 淘宝/天猫 · Amazon</span>
+      <span class="summary-chip">💰 ¥59 — $70</span>
+      <span class="summary-chip">🌍 中/比/意/美/加</span>
+    </div>
+    <div class="products">
+
+<div class="product-card"><div class="product-img">📏</div><div class="product-body">
+<div class="product-rank">TOP 1 · 折叠黑科技</div>
+<div class="product-name">Bombol Pop-Up Booster</div>
+<div class="product-brand">Bombol · 🇧🇪 比利时</div>
+<div class="product-tags"><span class="tag price">¥300-500</span><span class="tag country">比利时</span><span class="tag">折叠便携</span></div>
+<div class="product-desc">一秒弹开立住，收起后薄如书本可塞柜缝。弹簧助力自动升至合适高度，餐盘可滑动微调，不挑桌子。</div>
+<div class="product-source">📎 <a href="https://jianghu.taobao.com/detail/47500_78484062" rel="nofollow" target="_blank">淘宝详情</a></div>
+</div></div>
+
+<div class="product-card"><div class="product-img">📏</div><div class="product-body">
+<div class="product-rank">TOP 2 · 3合1全能</div>
+<div class="product-name">Chicco Bento 3-in-1</div>
+<div class="product-brand">Chicco · 🇮🇹 意大利</div>
+<div class="product-tags"><span class="tag price">$35-45</span><span class="tag country">意大利</span><span class="tag">50lbs</span></div>
+<div class="product-desc">增高椅+喂食椅+地板椅三合一，紧凑可折叠。亚马逊2026年度好评推荐。</div>
+<div class="product-source">📎 <a href="https://playgrounddad.com/best-seat-for-toddler-at-table/" rel="nofollow" target="_blank">PlaygroundDad</a></div>
+</div></div>
+
+<div class="product-card"><div class="product-img">📏</div><div class="product-body">
+<div class="product-rank">TOP 3 · 易清洁首选</div>
+<div class="product-name">SmartClean Booster</div>
+<div class="product-brand">Ingenuity · 🇺🇸 美国</div>
+<div class="product-tags"><span class="tag price">$20-30</span><span class="tag country">美国</span><span class="tag">33lbs</span></div>
+<div class="product-desc">光滑无孔外壳湿巾秒擦干净，3点式安全带保安全。极轻量适配多数餐椅。</div>
+<div class="product-source">📎 <a href="https://playgrounddad.com/best-seat-for-toddler-at-table/" rel="nofollow" target="_blank">PlaygroundDad</a></div>
+</div></div>
+
+<div class="product-card"><div class="product-img">📏</div><div class="product-body">
+<div class="product-rank">TOP 4 · 人体工学</div>
+<div class="product-name">Upseat Boost Ergonomic</div>
+<div class="product-brand">Upseat · 🇨🇦 加拿大</div>
+<div class="product-tags"><span class="tag price">$50-70</span><span class="tag country">加拿大</span><span class="tag">PT开发</span></div>
+<div class="product-desc">物理治疗师开发，高度可调精准对齐餐桌。促进臀部健康坐姿，获PT专业推荐。</div>
+<div class="product-source">📎 <a href="https://playgrounddad.com/best-seat-for-toddler-at-table/" rel="nofollow" target="_blank">PlaygroundDad</a></div>
+</div></div>
+
+<div class="product-card"><div class="product-img">📏</div><div class="product-body">
+<div class="product-rank">TOP 5 · 双面坐垫</div>
+<div class="product-name">双面增高坐垫 太空熊款</div>
+<div class="product-brand">国产品牌 · 🇨🇳 中国</div>
+<div class="product-tags"><span class="tag price">¥59.80</span><span class="tag">藤席+毛绒</span><span class="tag">39cm</span></div>
+<div class="product-desc">A面藤席+B面毛绒双面可用，39×39cm厚10cm。海绵支撑稳当，视线与餐桌齐平。</div>
+<div class="product-source">📎 <a href="https://world.taobao.com/item/784685334593.htm" rel="nofollow" target="_blank">淘宝商品</a></div>
+</div></div>
+
+<div class="product-card"><div class="product-img">📏</div><div class="product-body">
+<div class="product-rank">TOP 6 · 护脊U型</div>
+<div class="product-name">U型护脊增高坐垫 腊肠狗款</div>
+<div class="product-brand">国产品牌 · 🇨🇳 中国</div>
+<div class="product-tags"><span class="tag price">¥50-70</span><span class="tag">U型护脊</span><span class="tag">可拆卸清洗</span></div>
+<div class="product-desc">40.1×45.1cm棉麻面料，U型造型护脊护腰，带搭扣安全防滑。天猫专属款。</div>
+<div class="product-source">📎 <a href="https://world.taobao.com/item/1029782781687.htm" rel="nofollow" target="_blank">淘宝商品</a></div>
+</div></div>
+
+    </div>
+  </div>
+
+  <div class="stats-footer">
+    <div class="stat-row">
+      <div><div class="stat-num">17</div><div class="stat-label">今日新品</div></div>
+      <div><div class="stat-num">8</div><div class="stat-label">品牌来源国</div></div>
+      <div><div class="stat-num">3</div><div class="stat-label">调研品类</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tabs .tab').forEach(function(t){t.classList.remove('active')});
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});
+  document.querySelector('.tab[onclick*="'+id+'"]').classList.add('active');
+  document.getElementById('panel-'+id).classList.add('active');
+}
+</script>
+</body>
+</html>
