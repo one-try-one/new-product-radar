@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新品调研日报</title>
+<style>
+  :root { color-scheme: light; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #FEFAF6; color: #3D342F;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Noto Sans SC", sans-serif;
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1000px; margin: 0 auto; padding: 40px 24px 80px; }
+  .header { text-align: center; margin-bottom: 32px; }
+  .header h1 { font-size: 30px; font-weight: 700; color: #2D2420; letter-spacing: -0.02em; }
+  .header .subtitle { font-size: 14px; color: #A0928B; margin-top: 6px; }
+  .header .update-badge { display: inline-flex; align-items: center; gap: 6px; background: #FFF0E5; border: 1px solid #FDD9B5; border-radius: 100px; padding: 6px 16px; font-size: 12px; color: #C26E24; margin-top: 12px; }
+  .update-badge .live-dot { width: 6px; height: 6px; background: #E88B3A; border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .tabs-wrap { display: flex; gap: 6px; justify-content: center; margin-bottom: 32px; flex-wrap: wrap; }
+  .tab-btn { background: #FFFFFF; border: 1px solid #F0E8E0; border-radius: 100px; padding: 10px 20px; font-size: 14px; font-weight: 500; color: #8B7E74; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+  .tab-btn:hover { border-color: #FDD9B5; color: #5C4F49; }
+  .tab-btn.active { background: #FFF0E5; border-color: #FDD9B5; color: #C26E24; font-weight: 600; }
+  .tab-badge { font-size: 11px; background: #F5EFE8; color: #A0928B; padding: 1px 8px; border-radius: 100px; }
+  .tab-btn.active .tab-badge { background: #FDD9B5; color: #C26E24; }
+  .category-panel { display: none; }
+  .category-panel.active { display: block; }
+  .bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .bento-card { background: #FFFFFF; border: 1px solid #F0E8E0; border-radius: 20px; overflow: hidden; transition: box-shadow 0.25s, transform 0.25s; }
+  .bento-card:hover { box-shadow: 0 8px 30px rgba(120, 80, 50, 0.08); transform: translateY(-2px); }
+  .card-stats { grid-column: 1 / -1; display: flex; gap: 32px; justify-content: center; padding: 28px 24px; }
+  .stat-block { text-align: center; }
+  .stat-block .num { font-size: 40px; font-weight: 800; color: #2D2420; letter-spacing: -0.03em; }
+  .stat-block .lbl { font-size: 13px; color: #A0928B; margin-top: 4px; }
+  .card-summary { grid-column: span 2; background: linear-gradient(135deg, #FFF8F0 0%, #FFF3E8 100%); border-color: #FDD9B5; display: flex; align-items: center; gap: 16px; }
+  .card-summary .icon-wrap { width: 48px; height: 48px; background: #FFE8D0; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+  .card-summary .info h4 { font-size: 14px; font-weight: 600; color: #8B5E3C; }
+  .card-summary .info .big-text { font-size: 20px; font-weight: 700; color: #2D2420; margin-top: 2px; }
+  .prod-img-placeholder { width: 100%; aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center; font-size: 48px; color: #C5B9B0; background: linear-gradient(135deg, #F5EFE8 0%, #E8DDD2 50%, #F0E8E0 100%); }
+  .card-product { grid-column: span 2; display: flex; flex-direction: column; }
+  .card-product .card-body { padding: 20px 24px 24px; display: flex; flex-direction: column; flex: 1; }
+  .card-product .prod-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; gap: 12px; }
+  .card-product .prod-header h3 { font-size: 16px; font-weight: 600; color: #2D2420; line-height: 1.4; }
+  .card-product .brand { font-size: 13px; color: #A0928B; font-weight: 500; margin-bottom: 6px; }
+  .card-product .price-tag { font-size: 18px; font-weight: 700; color: #C26E24; white-space: nowrap; }
+  .card-product .meta { display: flex; gap: 16px; font-size: 12px; color: #A0928B; margin-bottom: 8px; flex-wrap: wrap; }
+  .card-product .desc { font-size: 13px; color: #5C4F49; line-height: 1.7; flex: 1; }
+  .card-product .card-footer { display: flex; gap: 10px; margin-top: 14px; padding-top: 14px; border-top: 1px solid #F5EFE8; justify-content: space-between; align-items: center; }
+  .chip { font-size: 11px; padding: 4px 10px; border-radius: 8px; font-weight: 500; }
+  .chip-warm { background: #FFF0E5; color: #C26E24; }
+  .chip-cool { background: #EEF5FB; color: #3B7DB5; }
+  .chip-green { background: #EDF5EC; color: #4A7C45; }
+  .source-link { font-size: 12px; color: #C26E24; text-decoration: none; font-weight: 500; }
+  .source-link:hover { text-decoration: underline; }
+  .card-featured { grid-column: 1 / -1; background: linear-gradient(135deg, #FFFDF8 0%, #FFF9F0 100%); border: 2px solid #FDD9B5; display: flex; align-items: stretch; }
+  .card-featured .feat-img { width: 260px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #F5EFE8 0%, #E8DDD2 50%, #F5EFE8 100%); min-height: 220px; }
+  .card-featured .feat-img .img-placeholder { font-size: 72px; color: #C5B9B0; opacity: 0.6; }
+  .card-featured .feat-body { flex: 1; padding: 24px 28px; display: flex; flex-direction: column; }
+  .card-featured .featured-rank { width: 40px; height: 40px; background: #FFE8D0; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; color: #C26E24; flex-shrink: 0; margin-bottom: 12px; }
+  .card-featured .feat-body h3 { font-size: 20px; font-weight: 700; color: #2D2420; margin-bottom: 4px; }
+  .card-featured .feat-body .brand { font-size: 13px; color: #A0928B; margin-bottom: 10px; }
+  .card-featured .feat-body .desc { font-size: 14px; color: #5C4F49; line-height: 1.7; flex: 1; }
+  .card-featured .feat-meta { display: flex; gap: 20px; font-size: 13px; color: #A0928B; margin-top: 14px; padding-top: 14px; border-top: 1px solid #F5EFE8; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; }
+  .card-featured .price-tag { font-size: 24px; }
+  .empty-state { grid-column: 1 / -1; text-align: center; padding: 60px 24px; color: #C5B9B0; }
+  .empty-state .empty-icon { font-size: 48px; margin-bottom: 16px; }
+  .empty-state h3 { font-size: 18px; color: #A0928B; font-weight: 500; margin-bottom: 8px; }
+  .footer { text-align: center; margin-top: 48px; font-size: 12px; color: #C5B9B0; line-height: 1.8; }
+  @media(max-width:768px){ .bento{grid-template-columns:1fr} .card-stats{flex-wrap:wrap;gap:20px} .card-summary{grid-column:1/-1} .card-product{grid-column:1/-1} .card-featured{flex-direction:column} .card-featured .feat-img{width:100%;aspect-ratio:16/9;min-height:auto} .tabs-wrap{gap:4px} .tab-btn{padding:8px 14px;font-size:13px} .container{padding:24px 16px 60px} .header h1{font-size:24px} .stat-block .num{font-size:30px} }
+  @media(min-width:769px) and (max-width:1024px){ .bento{grid-template-columns:1fr 1fr} .card-stats,.card-featured{grid-column:1/-1} }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>新品调研日报</h1>
+    <div class="subtitle">每天早上 10:00 自动更新 · 全球多渠道全覆盖</div>
+    <div class="update-badge"><span class="live-dot"></span> 等待首次调研...</div>
+  </div>
+
+  <div class="tabs-wrap">
+    <button class="tab-btn active" onclick="switchTab('highchair')">🪑 儿童餐椅 <span class="tab-badge">待调研</span></button>
+    <button class="tab-btn" onclick="switchTab('stroller')">🚼 婴儿推车 <span class="tab-badge">待调研</span></button>
+    <button class="tab-btn" onclick="switchTab('carseat')">🛡️ 安全座椅 <span class="tab-badge">待调研</span></button>
+  </div>
+
+  <div class="category-panel active" id="panel-highchair">
+    <div class="bento">
+      <div class="bento-card card-stats">
+        <div class="stat-block"><div class="num">—</div><div class="lbl">新品数量</div></div>
+        <div class="stat-block"><div class="num">—</div><div class="lbl">重点关注</div></div>
+        <div class="stat-block"><div class="num">—</div><div class="lbl">价格区间</div></div>
+      </div>
+      <div class="empty-state">
+        <div class="empty-icon">⏳</div>
+        <h3>等待首次调研</h3>
+        <p>首次调研将在下一个工作日 10:00 自动运行，届时这里将展示全球新品信息。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-panel" id="panel-stroller">
+    <div class="bento">
+      <div class="bento-card card-stats">
+        <div class="stat-block"><div class="num">—</div><div class="lbl">新品数量</div></div>
+        <div class="stat-block"><div class="num">—</div><div class="lbl">重点关注</div></div>
+        <div class="stat-block"><div class="num">—</div><div class="lbl">价格区间</div></div>
+      </div>
+      <div class="empty-state">
+        <div class="empty-icon">⏳</div>
+        <h3>等待首次调研</h3>
+        <p>首次调研将在下一个工作日 10:00 自动运行。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-panel" id="panel-carseat">
+    <div class="bento">
+      <div class="bento-card card-stats">
+        <div class="stat-block"><div class="num">—</div><div class="lbl">新品数量</div></div>
+        <div class="stat-block"><div class="num">—</div><div class="lbl">重点关注</div></div>
+        <div class="stat-block"><div class="num">—</div><div class="lbl">价格区间</div></div>
+      </div>
+      <div class="empty-state">
+        <div class="empty-icon">⏳</div>
+        <h3>等待首次调研</h3>
+        <p>首次调研将在下一个工作日 10:00 自动运行。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    每天 10:00 自动更新 · 调研渠道：Amazon · 天猫 · 小红书 · YouTube · Kickstarter · Reddit · B站 · 抖音<br>
+    钉钉推送 + GitHub Pages 托管
+  </div>
+
+</div>
+<script>
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector('.tab-btn[onclick*="'+tabId+'"]').classList.add('active');
+  document.querySelectorAll('.category-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-'+tabId).classList.add('active');
+}
+</script>
+</body>
+</html>
