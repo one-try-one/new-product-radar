@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新品调研日报 | 2026年7月7日</title>
+<style>
+:root { color-scheme: light; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #FEFAF6; color: #3D342F;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Noto Sans SC", sans-serif;
+  line-height: 1.6; -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
+.back-link { display: inline-block; margin-bottom: 20px; font-size: 13px; color: #C26E24; text-decoration: none; font-weight: 500; }
+.back-link:hover { text-decoration: underline; }
+.header { text-align: center; margin-bottom: 28px; }
+.header h1 { font-size: 28px; font-weight: 700; color: #2D2420; letter-spacing: -0.02em; }
+.header .date { font-size: 14px; color: #A0928B; margin-top: 4px; }
+.header .update-badge { display: inline-flex; align-items: center; gap: 6px; background: #FFF0E5; border: 1px solid #FDD9B5; border-radius: 100px; padding: 5px 14px; font-size: 12px; color: #C26E24; margin-top: 10px; }
+.update-badge .live-dot { width: 6px; height: 6px; background: #E88B3A; border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.tabs-wrap { display: flex; gap: 6px; justify-content: center; margin-bottom: 28px; flex-wrap: wrap; }
+.tab-btn { background: #FFFFFF; border: 1px solid #F0E8E0; border-radius: 100px; padding: 10px 20px; font-size: 14px; font-weight: 500; color: #8B7E74; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+.tab-btn:hover { border-color: #FDD9B5; color: #5C4F49; }
+.tab-btn.active { background: #FFF0E5; border-color: #FDD9B5; color: #C26E24; font-weight: 600; }
+.tab-badge { font-size: 11px; background: #F5EFE8; color: #A0928B; padding: 1px 8px; border-radius: 100px; }
+.tab-btn.active .tab-badge { background: #FDD9B5; color: #C26E24; }
+.category-panel { display: none; }
+.category-panel.active { display: block; }
+.bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.bento-card { background: #FFFFFF; border: 1px solid #F0E8E0; border-radius: 20px; overflow: hidden; transition: box-shadow 0.25s, transform 0.25s; }
+.bento-card:hover { box-shadow: 0 8px 30px rgba(120, 80, 50, 0.08); transform: translateY(-2px); }
+.card-stats { grid-column: 1 / -1; display: flex; gap: 32px; justify-content: center; padding: 28px 24px; }
+.stat-block { text-align: center; }
+.stat-block .num { font-size: 40px; font-weight: 800; color: #2D2420; letter-spacing: -0.03em; }
+.stat-block .lbl { font-size: 13px; color: #A0928B; margin-top: 4px; }
+.card-summary { grid-column: span 2; background: linear-gradient(135deg, #FFF8F0 0%, #FFF3E8 100%); border-color: #FDD9B5; display: flex; align-items: center; gap: 16px; padding: 20px 24px; }
+.card-summary .icon-wrap { width: 48px; height: 48px; background: #FFE8D0; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.card-summary .info h4 { font-size: 14px; font-weight: 600; color: #8B5E3C; }
+.card-summary .info .big-text { font-size: 16px; font-weight: 700; color: #2D2420; margin-top: 2px; }
+.card-product { grid-column: span 2; display: flex; flex-direction: column; }
+.card-product .card-body { padding: 20px 24px 24px; display: flex; flex-direction: column; flex: 1; }
+.card-product .prod-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; gap: 10px; }
+.card-product .prod-header h3 { font-size: 16px; font-weight: 600; color: #2D2420; line-height: 1.4; }
+.card-product .brand { font-size: 13px; color: #A0928B; font-weight: 500; margin-bottom: 6px; }
+.card-product .price-tag { font-size: 18px; font-weight: 700; color: #C26E24; white-space: nowrap; }
+.card-product .meta { display: flex; gap: 16px; font-size: 12px; color: #A0928B; margin-bottom: 8px; flex-wrap: wrap; }
+.card-product .desc { font-size: 13px; color: #5C4F49; line-height: 1.7; flex: 1; }
+.card-product .card-footer { display: flex; gap: 10px; margin-top: 14px; padding-top: 14px; border-top: 1px solid #F5EFE8; justify-content: space-between; align-items: center; }
+.prod-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: linear-gradient(135deg, #F5EFE8 0%, #E8DDD2 50%, #F0E8E0 100%); }
+.chip { font-size: 11px; padding: 4px 10px; border-radius: 8px; font-weight: 500; display: inline-flex; align-items: center; gap: 3px; }
+.chip-warm { background: #FFF0E5; color: #C26E24; }
+.chip-cool { background: #EEF5FB; color: #3B7DB5; }
+.chip-green { background: #EDF5EC; color: #4A7C45; }
+.source-link { font-size: 12px; color: #C26E24; text-decoration: none; font-weight: 500; }
+.source-link:hover { text-decoration: underline; }
+.card-featured { grid-column: 1 / -1; background: linear-gradient(135deg, #FFFDF8 0%, #FFF9F0 100%); border: 2px solid #FDD9B5; display: flex; align-items: stretch; }
+.card-featured .feat-img { width: 260px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #F5EFE8 0%, #E8DDD2 50%, #F5EFE8 100%); min-height: 220px; }
+.card-featured .feat-img img { width: 100%; height: 100%; object-fit: cover; }
+.card-featured .feat-body { flex: 1; padding: 24px 28px; display: flex; flex-direction: column; }
+.card-featured .featured-rank { width: 40px; height: 40px; background: #FFE8D0; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; color: #C26E24; flex-shrink: 0; margin-bottom: 10px; }
+.card-featured .feat-body h3 { font-size: 20px; font-weight: 700; color: #2D2420; margin-bottom: 4px; }
+.card-featured .feat-body .brand { font-size: 13px; color: #A0928B; margin-bottom: 8px; }
+.card-featured .feat-body .desc { font-size: 14px; color: #5C4F49; line-height: 1.7; flex: 1; }
+.card-featured .feat-meta { display: flex; gap: 20px; font-size: 13px; color: #A0928B; margin-top: 14px; padding-top: 14px; border-top: 1px solid #F5EFE8; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; }
+.card-featured .price-tag { font-size: 24px; font-weight: 700; color: #C26E24; }
+.empty-state { grid-column: 1 / -1; text-align: center; padding: 60px 24px; color: #C5B9B0; }
+.footer { text-align: center; margin-top: 48px; font-size: 12px; color: #C5B9B0; line-height: 1.8; }
+@media(max-width:768px){ .bento{grid-template-columns:1fr} .card-stats{flex-wrap:wrap;gap:20px} .card-summary{grid-column:1/-1} .card-product{grid-column:1/-1} .card-featured{flex-direction:column} .card-featured .feat-img{width:100%;aspect-ratio:16/9;min-height:auto} .container{padding:24px 16px 60px} .header h1{font-size:24px} .stat-block .num{font-size:30px} }
+@media(min-width:769px) and (max-width:1024px){ .bento{grid-template-columns:1fr 1fr} .card-stats,.card-featured{grid-column:1/-1} }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="../index.html">← 返回历史报告</a>
+  <div class="header">
+    <h1>新品调研日报</h1>
+    <div class="date">2026年7月7日 · 星期二</div>
+    <div class="update-badge"><span class="live-dot"></span> 数据实时采集 · 3品类18款新品</div>
+  </div>
+
+  <div class="tabs-wrap">
+    <button class="tab-btn active" onclick="switchTab('highchair')">🪑 儿童餐椅 <span class="tab-badge">6 款</span></button>
+    <button class="tab-btn" onclick="switchTab('growing')">🌱 成长椅 <span class="tab-badge">6 款</span></button>
+    <button class="tab-btn" onclick="switchTab('booster')">📏 增高椅 <span class="tab-badge">6 款</span></button>
+  </div>
+
+  <!-- ===== 儿童餐椅 🪑 ===== -->
+  <div class="category-panel active" id="panel-highchair">
+    <div class="bento">
+
+      <!-- 统计栏 -->
+      <div class="bento-card card-stats">
+        <div class="stat-block"><div class="num">6</div><div class="lbl">新品数量</div></div>
+        <div class="stat-block"><div class="num">3</div><div class="lbl">真实产品图</div></div>
+        <div class="stat-block"><div class="num">🇺🇸🇬🇧🇩🇪</div><div class="lbl">覆盖国家</div></div>
+        <div class="stat-block"><div class="num">£15~$300</div><div class="lbl">价格区间</div></div>
+      </div>
+
+      <!-- 摘要卡 -->
+      <div class="bento-card card-summary">
+        <div class="icon-wrap">🧑‍🍼</div>
+        <div class="info"><h4>核心趋势</h4><div class="big-text">多模式成长型成主流，便携折叠款爆发</div></div>
+      </div>
+      <div class="bento-card card-summary">
+        <div class="icon-wrap">🔥</div>
+        <div class="info"><h4>今日焦点</h4><div class="big-text">Graco Presti 3-in-1 获 Mother&Baby 2026 金奖</div></div>
+      </div>
+
+      <!-- 重点大卡：Joie Chestnut -->
+      <div class="bento-card card-featured">
+        <div class="feat-img" style="padding:12px;border-radius:20px 0 0 20px;overflow:hidden;">
+          <img loading="lazy" src="https://images.bauerhosting.com/affiliates/sites/12/2025/12/Joie-Chestnut%E2%84%A2-Multimode-Highchair.2-1.jpg?w=480" alt="Joie Chestnut" style="width:100%;height:100%;object-fit:contain;object-position:center;border-radius:12px;" onerror="this.onerror=null;this.parentElement.innerHTML='<span style=font-size:64px;opacity:0.3>🪑</span>'">
+        </div>
+        <div class="feat-body">
+          <div class="featured-rank">01</div>
+          <h3>Chestnut Multimode Highchair</h3>
+          <div class="brand">Joie · 🇬🇧 英国</div>
+          <div class="desc">Mother&Baby 2026 银奖。9合1多模式（新生儿躺椅→6岁），榉木腿，4档靠背倾斜含平躺模式，三段高度调整。从评测页面直接提取产品图。</div>
+          <div class="feat-meta">
+            <div style="display:flex;gap:12px;align-items:center">
+              <span>📅 2026新品</span><span>🏆 银奖</span>
+              <span class="chip chip-warm">🔥 热度高</span>
+              <span class="chip chip-cool">Mother&Baby</span>
+            </div>
+            <div style="text-align:right">
+              <div class="price-tag">£120</div>
+              <a class="source-link" href="https://www.motherandbaby.com/reviews/highchairs/joie-chestnut-multimode-highchair/" target="_blank">查看评测原文 →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Graco Presti -->
+      <div class="bento-card card-product">
+        <img class="prod-img" loading="lazy" src="https://images.bauerhosting.com/affiliates/sites/12/2025/12/Graco-Presti-3-in-1-Highchair.jpg?w=480" alt="Graco Presti" onerror="this.onerror=null;this.style.background='linear-gradient(135deg,#FFF8F0,#FFE8D0,#FFF3E8)';this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22320%22 height=%22240%22%3E%3Crect fill=%22%23FFF3E8%22 width=%22320%22 height=%22240%22/%3E%3Ctext fill=%22%23D4A87C%22 font-size=%2264%22 text-anchor=%22middle%22 x=%22160%22 y=%22140%22%3E🪑%3C/text%3E%3C/svg%3E'">
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>Presti 3-in-1 Highchair</h3>
+            <span class="price-tag">£59.99</span>
+          </div>
+          <div class="brand">Graco · 🇺🇸 美国</div>
+          <div class="meta"><span>🏆 金奖</span><span>⭐ 4.5/5</span><span>📅 2026</span></div>
+          <div class="desc">Mother&Baby 2026 金奖得主。3合1设计（高脚椅→增高椅→幼儿椅），木纹腿现代风格，紧凑折叠，洗碗机安全餐盘。</div>
+          <div class="card-footer">
+            <span class="chip chip-warm">🔥 金奖</span>
+            <a class="source-link" href="https://www.motherandbaby.com/reviews/highchairs/graco-presti-3-in1-highchair-review/" target="_blank">查看评测 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Puggle Snack & Play -->
+      <div class="bento-card card-product">
+        <img class="prod-img" loading="lazy" src="https://images.bauerhosting.com/affiliates/sites/12/2025/12/Puggle-Snack-Play-7-in-1-Hi-lo-Highchair.jpg?w=480" alt="Puggle" onerror="this.onerror=null;this.style.background='linear-gradient(135deg,#FFF8F0,#FFE8D0,#FFF3E8)';this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22320%22 height=%22240%22%3E%3Crect fill=%22%23FFF3E8%22 width=%22320%22 height=%22240%22/%3E%3Ctext fill=%22%23D4A87C%22 font-size=%2264%22 text-anchor=%22middle%22 x=%22160%22 y=%22140%22%3E🪑%3C/text%3E%3C/svg%3E'">
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>Snack &amp; Play 7-in-1</h3>
+            <span class="price-tag">£99.95</span>
+          </div>
+          <div class="brand">Puggle · 🇬🇧 英国</div>
+          <div class="meta"><span>🏆 铜奖</span><span>⭐ 4/5</span><span>📅 2026</span></div>
+          <div class="desc">7合1包括玩乐桌和活动中心，LEGO Duplo兼容桌面，储物篮。Mother&Baby 2026 铜奖。</div>
+          <div class="card-footer">
+            <span class="chip chip-cool">LEGO兼容</span>
+            <a class="source-link" href="https://www.motherandbaby.com/reviews/highchairs/puggle-snack-and-play-7-in-1-highchair-review/" target="_blank">查看评测 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- hauck Arketa+ -->
+      <div class="bento-card card-product">
+        <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#FDF6EE,#F5E6D8,#FDF2E4);font-size:64px;aspect-ratio:4/3;">🪑</div>
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>Arketa+ Set</h3>
+            <span class="price-tag">$179.99</span>
+          </div>
+          <div class="brand">hauck · 🇩🇪 德国</div>
+          <div class="meta"><span>🏆 2026 Parents Best</span><span>🌳 FSC榉木</span></div>
+          <div class="desc">2026 Parents Best for Baby Awards 最佳木质餐椅。13档调节，承重286磅，防倾倒设计，OEKO-TEX认证。</div>
+          <div class="card-footer">
+            <span class="chip chip-green">可持续</span>
+            <a class="source-link" href="https://www.advfn.com/stock-market/stock-news/98277800/haucks-arketa-set-announced-as-a-winner-of-the-20" target="_blank">来源 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colugo Clip-On -->
+      <div class="bento-card card-product">
+        <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#FDF6EE,#F5E6D8,#FDF2E4);font-size:64px;aspect-ratio:4/3;">🪑</div>
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>Clip-On High Chair</h3>
+            <span class="price-tag">$69</span>
+          </div>
+          <div class="brand">Colugo · 🇺🇸 美国</div>
+          <div class="meta"><span>📅 2026年4月上市</span><span>⚡ 1分钟安装</span></div>
+          <div class="desc">Slide-to-Fit 专利夹具，60秒内安装完成。折叠入收纳袋，仅重2kg，300D防水面料，三点安全带。</div>
+          <div class="card-footer">
+            <span class="chip chip-warm">新品首秀</span>
+            <a class="source-link" href="https://colugo.com/products/clip-on-high-chair" target="_blank">产品页面 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Momcozy DinerPal -->
+      <div class="bento-card card-product">
+        <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#FDF6EE,#F5E6D8,#FDF2E4);font-size:64px;aspect-ratio:4/3;">🪑</div>
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>DinerPal Wooden High Chair</h3>
+            <span class="price-tag">~$299</span>
+          </div>
+          <div class="brand">Momcozy · 🇨🇳 中国</div>
+          <div class="meta"><span>⭐ 4.4/5</span><span>🌳 FSC榉木</span><span>📅 2026</span></div>
+          <div class="desc">3合1转换（餐椅→学步塔→成人椅），承重308磅，7档高度调节，北欧自然双色设计。</div>
+          <div class="card-footer">
+            <span class="chip chip-warm">Amazon热卖</span>
+            <a class="source-link" href="https://momcozy.com/products/momcozy-dinerpal-high-chair" target="_blank">产品页面 →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 成长椅 🌱 ===== -->
+  <div class="category-panel" id="panel-growing">
+    <div class="bento">
+
+      <div class="bento-card card-stats">
+        <div class="stat-block"><div class="num">6</div><div class="lbl">新品数量</div></div>
+        <div class="stat-block"><div class="num">0</div><div class="lbl">真实产品图</div></div>
+        <div class="stat-block"><div class="num">🇨🇳🇺🇸🇬🇧🇭🇰</div><div class="lbl">覆盖国家/地区</div></div>
+        <div class="stat-block"><div class="num">¥699~$329</div><div class="lbl">价格区间</div></div>
+      </div>
+
+      <div class="bento-card card-summary">
+        <div class="icon-wrap">🌿</div>
+        <div class="info"><h4>核心趋势</h4><div class="big-text">模块化、全周期陪伴、可持续设计成主流</div></div>
+      </div>
+      <div class="bento-card card-summary">
+        <div class="icon-wrap">🏆</div>
+        <div class="info"><h4>今日焦点</h4><div class="big-text">WAITINGWOOOD 获 iF Design Award 2026</div></div>
+      </div>
+
+      <!-- 重点大卡：Nugget Smore -->
+      <div class="bento-card card-featured">
+        <div class="feat-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#EDF5EC,#D4E8D0,#E5F0E0);min-height:220px;">
+          <span style="font-size:64px;opacity:0.4;">🌱</span>
+        </div>
+        <div class="feat-body">
+          <div class="featured-rank">01</div>
+          <h3>Smore™ Modular Play Chair</h3>
+          <div class="brand">Nugget · 🇺🇸 美国</div>
+          <div class="desc">2026年6月刚发布！三件式模块化泡沫椅，孩子可自由拆装重组——阅读角、隧道、游戏屋、书桌。9色可选，首发价$179。</div>
+          <div class="feat-meta">
+            <div style="display:flex;gap:12px;align-items:center">
+              <span>📅 2026年6月</span><span>🎨 9色</span>
+              <span class="chip chip-warm">🔥 新品首发</span>
+              <span class="chip chip-green">模块化</span>
+            </div>
+            <div style="text-align:right">
+              <div class="price-tag">$179</div>
+              <a class="source-link" href="https://nuggetcomfort.com/products/smore-bamboo" target="_blank">产品页面 →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLOW GROWTH CHAIR -->
+      <div class="bento-card card-product">
+        <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#EDF5EC,#D4E8D0,#E5F0E0);font-size:64px;aspect-ratio:4/3;">🌱</div>
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>SLOW GROWTH CHAIR</h3>
+            <span class="price-tag">￥待询</span>
+          </div>
+          <div class="brand">WAITINGWOOOD · 🇨🇳 上海</div>
+          <div class="meta"><span>🏆 iF Design 2026</span><span>🔄 180°翻转靠背</span></div>
+          <div class="desc">iF设计奖获奖作品。座面和脚踏深度多级可调，弧形靠背可180°翻转双面使用，幼儿面→成人面。</div>
+          <div class="card-footer">
+            <span class="chip chip-warm">iF Design Award</span>
+            <a class="source-link" href="https://ifdesign.com/en/winner-ranking/project/slow-growth-chair/768844" target="_blank">奖项页面 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mamazing GrowPod -->
+      <div class="bento-card card-product">
+        <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#EDF5EC,#D4E8D0,#E5F0E0);font-size:64px;aspect-ratio:4/3;">🌱</div>
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>GrowPod High Chair</h3>
+            <span class="price-tag">~$200</span>
+          </div>
+          <div class="brand">Mamazing · 🇺🇸 美国</div>
+          <div class="meta"><span>⭐ 4.5/5</span><span>🌳 实心榉木</span></div>
+          <div class="desc">折叠木质餐椅，从婴儿用到成人。可调节脚踏、可拆卸硅胶餐盘、洗碗机安全，可折叠收纳。</div>
+          <div class="card-footer">
+            <span class="chip chip-green">折叠实木</span>
+            <a class="source-link" href="https://mommyhood101.com/mamazing-growpod-review" target="_blank">查看评测 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tutti Bambini Nova -->
+      <div class="bento-card card-product">
+        <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#EDF5EC,#D4E8D0,#E5F0E0);font-size:64px;aspect-ratio:4/3;">🌱</div>
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>Nova Evolutionary Highchair</h3>
+            <span class="price-tag">£99.95</span>
+          </div>
+          <div class="brand">Tutti Bambini · 🇬🇧 英国</div>
+          <div class="meta"><span>🔄 7合1</span><span>📅 2026年8月ETA</span></div>
+          <div class="desc">7合1进化设计（餐椅→幼儿椅→玩乐桌），60秒折叠，含便携袋，Nanotex防污面料，0-12岁。</div>
+          <div class="card-footer">
+            <span class="chip chip-cool">预购中</span>
+            <a class="source-link" href="https://www.tuttibambini.com/products/nova-evolutionary-highchair-grey-oak" target="_blank">产品页面 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bombol KengaRu -->
+      <div class="bento-card card-product">
+        <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#EDF5EC,#D4E8D0,#E5F0E0);font-size:64px;aspect-ratio:4/3;">🌱</div>
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>KengaRu™ 成长椅</h3>
+            <span class="price-tag">HKD 2,499</span>
+          </div>
+          <div class="brand">Bombol · 🇭🇰 香港</div>
+          <div class="meta"><span>🔄 5合1</span><span>🌳 FSC榉木</span></div>
+          <div class="desc">5合1成长椅系统，成人椅+儿童椅+高脚餐椅+增高椅，6个月到成人，承重200kg。Smart Design Award 金奖。</div>
+          <div class="card-footer">
+            <span class="chip chip-green">FSC认证</span>
+            <a class="source-link" href="https://bombol.com/zh-hant/product/kengaru%E6%88%90%E9%95%B7%E6%A4%85/" target="_blank">产品页面 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- GSO居森 -->
+      <div class="bento-card card-product">
+        <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#EDF5EC,#D4E8D0,#E5F0E0);font-size:64px;aspect-ratio:4/3;">🌱</div>
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>居森皇冠成长椅</h3>
+            <span class="price-tag">¥699</span>
+          </div>
+          <div class="brand">GSO · 🇨🇳 中国</div>
+          <div class="meta"><span>🌳 进口榉木</span><span>📅 2026</span></div>
+          <div class="desc">进口榉木多档调节，环保水性漆零甲醛防水防污。座板+脚踏板多级可调，1岁用到成年。</div>
+          <div class="card-footer">
+            <span class="chip chip-green">性价比</span>
+            <a class="source-link" href="https://post.smzdm.com/p/a5rzzl0k/" target="_blank">查看评测 →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 增高椅 📏 ===== -->
+  <div class="category-panel" id="panel-booster">
+    <div class="bento">
+
+      <div class="bento-card card-stats">
+        <div class="stat-block"><div class="num">6</div><div class="lbl">新品数量</div></div>
+        <div class="stat-block"><div class="num">0</div><div class="lbl">真实产品图</div></div>
+        <div class="stat-block"><div class="num">🇭🇰🇬🇧🇺🇸</div><div class="lbl">覆盖国家/地区</div></div>
+        <div class="stat-block"><div class="num">$24~$89</div><div class="lbl">价格区间</div></div>
+      </div>
+
+      <div class="bento-card card-summary">
+        <div class="icon-wrap">🎒</div>
+        <div class="info"><h4>核心趋势</h4><div class="big-text">极致便携、折叠如书、R129安全标准升级</div></div>
+      </div>
+      <div class="bento-card card-summary">
+        <div class="icon-wrap">🧳</div>
+        <div class="info"><h4>今日焦点</h4><div class="big-text">Bombol Pop-Up：获多个国际设计大奖，展开即用</div></div>
+      </div>
+
+      <!-- 重点大卡：Bombol Pop-Up -->
+      <div class="bento-card card-featured">
+        <div class="feat-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#F5F0FB,#E8DCF5,#F0E8F5);min-height:220px;">
+          <span style="font-size:64px;opacity:0.4;">📏</span>
+        </div>
+        <div class="feat-body">
+          <div class="featured-rank">01</div>
+          <h3>Pop-Up™ Booster</h3>
+          <div class="brand">Bombol · 🇭🇰 香港</div>
+          <div class="desc">一秒弹开立住、收起薄如书本。折叠仅3.5cm厚、重0.95kg。金点设计奖、DIA智造奖、MUSE设计奖得主。一书之大，一椅之用。</div>
+          <div class="feat-meta">
+            <div style="display:flex;gap:12px;align-items:center">
+              <span>📅 2026推广</span><span>🏆 多项设计奖</span>
+              <span class="chip chip-warm">🔥 设计标杆</span>
+              <span class="chip chip-cool">折叠3.5cm</span>
+            </div>
+            <div style="text-align:right">
+              <div class="price-tag">~$40</div>
+              <a class="source-link" href="https://bombol.com/product/pop-up-booster/" target="_blank">产品页面 →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JoviKids Rober+ -->
+      <div class="bento-card card-product">
+        <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#F5F0FB,#E8DCF5,#F0E8F5);font-size:64px;aspect-ratio:4/3;">📏</div>
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>Rober+ 折叠增高座椅</h3>
+            <span class="price-tag">£79~£89</span>
+          </div>
+          <div class="brand">JoviKids · 🇬🇧 英国</div>
+          <div class="meta"><span>🛡️ R129认证</span><span>📅 2026新配色</span></div>
+          <div class="desc">可折叠高背增高座椅，EPP升级吸能泡沫，含旅行袋。3-12岁适用（100-150cm），5年质保。</div>
+          <div class="card-footer">
+            <span class="chip chip-cool">i-Size</span>
+            <a class="source-link" href="https://jovikids.com/products/jovikids-rober-folding-highback-booster-seat" target="_blank">产品页面 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apramo Flippa Flexi -->
+      <div class="bento-card card-product">
+        <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#F5F0FB,#E8DCF5,#F0E8F5);font-size:64px;aspect-ratio:4/3;">📏</div>
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>Flippa Flexi 成长椅</h3>
+            <span class="price-tag">~¥400</span>
+          </div>
+          <div class="brand">Apramo · 🇬🇧 英国</div>
+          <div class="meta"><span>🔄 6档可调</span><span>♻️ 100%再生聚酯</span></div>
+          <div class="desc">6种高度从高脚椅到凳子无缝过渡。铝制框架仅8kg，100%再生聚酯面料，超大可拆卸餐盘。</div>
+          <div class="card-footer">
+            <span class="chip chip-green">环保</span>
+            <a class="source-link" href="https://buyfriendly.com/products/apramo-flippa-flexi-%E5%85%92%E7%AB%A5%E6%88%90%E9%95%B7%E6%A4%85-dove-grey" target="_blank">产品页面 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bright Starts Pop N Sit -->
+      <div class="bento-card card-product">
+        <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#F5F0FB,#E8DCF5,#F0E8F5);font-size:64px;aspect-ratio:4/3;">📏</div>
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>Pop 'N Sit Portable Booster</h3>
+            <span class="price-tag">~$27</span>
+          </div>
+          <div class="brand">Bright Starts · 🇺🇸 美国</div>
+          <div class="meta"><span>🔄 3合1</span><span>🎒 含收纳袋</span></div>
+          <div class="desc">3模式（地板椅→喂食椅→增高椅），折叠至5×15英寸，含便携收纳袋，6个月-3岁适用。</div>
+          <div class="card-footer">
+            <span class="chip chip-green">性价比王</span>
+            <a class="source-link" href="https://www.mothercare.com.hk/products/free-gift-bright-starts-pop-n-sit-portable-booster-seat-worth-269" target="_blank">产品页面 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Munchkin Brica GoBoost -->
+      <div class="bento-card card-product">
+        <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#F5F0FB,#E8DCF5,#F0E8F5);font-size:64px;aspect-ratio:4/3;">📏</div>
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>Brica GoBoost Travel</h3>
+            <span class="price-tag">~$70</span>
+          </div>
+          <div class="brand">Munchkin · 🇺🇸 美国</div>
+          <div class="meta"><span>🧳 折叠便携</span><span>🎒 内置储物</span></div>
+          <div class="desc">折叠紧凑设计，内部钢架稳固，内置储物隔层，便携肩带。承重22.6kg。</div>
+          <div class="card-footer">
+            <span class="chip chip-cool">旅行首选</span>
+            <a class="source-link" href="https://buywisely.com.au/au/product/munchkin-brica-goboost-travel-booster-seat-bluegrey" target="_blank">产品页面 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nuby Easy Go -->
+      <div class="bento-card card-product">
+        <div class="prod-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#F5F0FB,#E8DCF5,#F0E8F5);font-size:64px;aspect-ratio:4/3;">📏</div>
+        <div class="card-body">
+          <div class="prod-header">
+            <h3>Easy Go Booster Seat</h3>
+            <span class="price-tag">~$24</span>
+          </div>
+          <div class="brand">Nuby · 🇺🇸 美国</div>
+          <div class="meta"><span>⚖️ 超轻</span><span>🔄 可折叠</span></div>
+          <div class="desc">可折叠轻量增高椅，涂层尼龙面料易清洁，可调三点安全带，9个月+适用，承重50磅。</div>
+          <div class="card-footer">
+            <span class="chip chip-green">超值</span>
+            <a class="source-link" href="https://www.heb.com/product-detail/nuby-nuby-easy-go-booster-seat-9m-each/2977058" target="_blank">产品页面 →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">2026年7月7日 · 新品调研日报 · 3品类18款新品 · 实时采集</div>
+</div>
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.tab-btn[onclick*="'+id+'"]').classList.add('active');
+  document.querySelectorAll('.category-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+}
+</script>
+</body>
+</html>

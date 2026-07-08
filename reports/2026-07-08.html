@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新品调研日报 | 2026年7月8日</title>
+<style>
+:root{color-scheme:light}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#FEFAF6;color:#3D342F;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Inter","Noto Sans SC",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.container{max-width:1000px;margin:0 auto;padding:32px 24px 80px}
+
+/* ── 返回 + 标题 ── */
+.back-link{display:inline-flex;align-items:center;gap:4px;margin-bottom:20px;font-size:13px;color:#C26E24;text-decoration:none;font-weight:500}
+.back-link:hover{text-decoration:underline}
+.header{text-align:center;margin-bottom:24px}
+.header h1{font-size:28px;font-weight:700;color:#2D2420;letter-spacing:-.02em}
+.header .date{font-size:14px;color:#A0928B;margin-top:4px}
+.header .update-badge{display:inline-flex;align-items:center;gap:6px;background:#FFF0E5;border:1px solid #FDD9B5;border-radius:100px;padding:5px 14px;font-size:12px;color:#C26E24;margin-top:8px}
+.update-badge .live-dot{width:6px;height:6px;background:#E88B3A;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ── 品类 Tab ── */
+.tabs-wrap{display:flex;gap:6px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
+.tab-btn{background:#FFF;border:1px solid #F0E8E0;border-radius:100px;padding:10px 20px;font-size:14px;font-weight:500;color:#8B7E74;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;user-select:none}
+.tab-btn:hover{border-color:#FDD9B5;color:#5C4F49}
+.tab-btn.active{background:#FFF0E5;border-color:#FDD9B5;color:#C26E24;font-weight:600}
+.tab-badge{font-size:11px;background:#F5EFE8;color:#A0928B;padding:1px 8px;border-radius:100px}
+.tab-btn.active .tab-badge{background:#FDD9B5;color:#C26E24}
+.category-panel{display:none}
+.category-panel.active{display:block}
+
+/* ── Bento 网格 ── */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.bento-card{background:#FFF;border:1px solid #F0E8E0;border-radius:20px;overflow:hidden;transition:box-shadow .25s,transform .25s}
+.bento-card:hover{box-shadow:0 8px 30px rgba(120,80,50,.08);transform:translateY(-2px)}
+
+/* ── 统计栏 ── */
+.card-stats{grid-column:1/-1;display:flex;gap:32px;justify-content:center;padding:28px 24px}
+.stat-block{text-align:center}
+.stat-block .num{font-size:40px;font-weight:800;color:#2D2420;letter-spacing:-.03em;line-height:1.1}
+.stat-block .lbl{font-size:13px;color:#A0928B;margin-top:4px}
+
+/* ── 摘要卡 ── */
+.card-summary{grid-column:span 2;background:linear-gradient(135deg,#FFF8F0,#FFF3E8);border-color:#FDD9B5;display:flex;align-items:center;gap:16px;padding:20px 24px}
+.card-summary .icon-wrap{width:48px;height:48px;background:#FFE8D0;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.card-summary .info h4{font-size:14px;font-weight:600;color:#8B5E3C}
+.card-summary .info .big-text{font-size:16px;font-weight:700;color:#2D2420;margin-top:2px}
+
+/* ── 重点产品大卡 ── */
+.card-featured{grid-column:1/-1;background:linear-gradient(135deg,#FFFDF8,#FFF9F0);border:2px solid #FDD9B5;display:flex;align-items:stretch}
+.card-featured .feat-img{width:260px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#F5EFE8,#E8DDD2,#F5EFE8);min-height:220px;padding:12px}
+.card-featured .feat-img img{width:100%;height:100%;object-fit:contain;border-radius:12px}
+.card-featured .feat-body{flex:1;padding:24px 28px;display:flex;flex-direction:column}
+.card-featured .featured-rank{width:40px;height:40px;background:#FFE8D0;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#C26E24;flex-shrink:0;margin-bottom:10px}
+.card-featured .feat-body h3{font-size:20px;font-weight:700;color:#2D2420;margin-bottom:4px}
+.card-featured .feat-body .brand{font-size:13px;color:#A0928B;margin-bottom:8px}
+.card-featured .feat-body .desc{font-size:14px;color:#5C4F49;line-height:1.7;flex:1}
+.card-featured .feat-meta{display:flex;gap:20px;font-size:13px;color:#A0928B;margin-top:14px;padding-top:14px;border-top:1px solid #F5EFE8;justify-content:space-between;align-items:flex-end;flex-wrap:wrap}
+.card-featured .price-tag{font-size:24px;font-weight:700;color:#C26E24}
+
+/* ── 普通产品卡片 ── */
+.card-product{grid-column:span 2;display:flex;flex-direction:column}
+.card-product .prod-img{width:100%;aspect-ratio:4/3;object-fit:contain;display:block;background:linear-gradient(135deg,#F5EFE8,#E8DDD2,#F0E8E0);padding:16px}
+.card-product .card-body{padding:20px 24px 24px;display:flex;flex-direction:column;flex:1}
+.card-product .prod-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;gap:10px}
+.card-product .prod-header h3{font-size:16px;font-weight:600;color:#2D2420;line-height:1.4}
+.card-product .brand{font-size:13px;color:#A0928B;font-weight:500;margin-bottom:6px}
+.card-product .price-tag{font-size:18px;font-weight:700;color:#C26E24;white-space:nowrap}
+.card-product .meta{display:flex;gap:16px;font-size:12px;color:#A0928B;margin-bottom:8px;flex-wrap:wrap}
+.card-product .desc{font-size:13px;color:#5C4F49;line-height:1.7;flex:1}
+.card-product .card-footer{display:flex;gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid #F5EFE8;justify-content:space-between;align-items:center;flex-wrap:wrap}
+
+/* ── 通用组件 ── */
+.chip{font-size:11px;padding:4px 10px;border-radius:8px;font-weight:500;display:inline-flex;align-items:center;gap:3px}
+.chip-warm{background:#FFF0E5;color:#C26E24}
+.chip-cool{background:#EEF5FB;color:#3B7DB5}
+.chip-green{background:#EDF5EC;color:#4A7C45}
+.source-link{font-size:12px;color:#C26E24;text-decoration:none;font-weight:500}
+.source-link:hover{text-decoration:underline}
+.empty-state{grid-column:1/-1;text-align:center;padding:60px 24px;color:#C5B9B0}
+.empty-state .empty-icon{font-size:48px;margin-bottom:12px}
+
+/* ── 页脚 ── */
+.footer{text-align:center;margin-top:48px;font-size:12px;color:#C5B9B0;line-height:1.8}
+.source-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:12px}
+.source-tag{font-size:11px;padding:4px 12px;border-radius:100px;background:#F5F2EC;color:#A0928B}
+
+@media(max-width:768px){.bento{grid-template-columns:1fr}.card-stats{flex-wrap:wrap;gap:20px}.card-summary{grid-column:1/-1}.card-product{grid-column:1/-1}.card-featured{flex-direction:column}.card-featured .feat-img{width:100%;aspect-ratio:16/9;min-height:auto}.container{padding:24px 16px 60px}.header h1{font-size:24px}.stat-block .num{font-size:30px}}
+@media(min-width:769px) and (max-width:1024px){.bento{grid-template-columns:1fr 1fr}.card-stats,.card-featured{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a class="back-link" href="../index.html">← 返回历史报告</a>
+
+<div class="header">
+  <h1>新品调研日报</h1>
+  <div class="date">2026年7月8日 · 周三</div>
+  <div class="update-badge"><span class="live-dot"></span> 3 品类 · 16 新品 · Amazon / 天猫 / 小红书 / Mother&Baby</div>
+</div>
+
+<!-- ═══ 品类 Tab ═══ -->
+<div class="tabs-wrap">
+  <button class="tab-btn active" onclick="switchTab('highchair')">🪑 儿童餐椅 <span class="tab-badge">6</span></button>
+  <button class="tab-btn" onclick="switchTab('growing')">🌱 成长椅 <span class="tab-badge">5</span></button>
+  <button class="tab-btn" onclick="switchTab('booster')">📏 增高椅 <span class="tab-badge">5</span></button>
+</div>
+
+<!-- ═══════ 儿童餐椅 ═══════ -->
+<div class="category-panel active" id="panel-highchair"><div class="bento">
+
+  <div class="bento-card card-stats">
+    <div class="stat-block"><div class="num">6</div><div class="lbl">新品</div></div>
+    <div class="stat-block"><div class="num">2</div><div class="lbl">重点</div></div>
+    <div class="stat-block"><div class="num">¥89-3,299</div><div class="lbl">价格区间</div></div>
+    <div class="stat-block"><div class="num">5</div><div class="lbl">渠道</div></div>
+  </div>
+
+  <div class="bento-card card-summary">
+    <div class="icon-wrap">🔍</div><div class="info"><h4>调研渠道</h4><div class="big-text">天猫 · Amazon · 小红书 · Mother&Baby</div></div>
+  </div>
+  <div class="bento-card card-summary">
+    <div class="icon-wrap">📊</div><div class="info"><h4>趋势</h4><div class="big-text">折叠便携 + 多功能成长型占主导</div></div>
+  </div>
+
+  <!-- 重点 -->
+  <div class="bento-card card-featured">
+    <a class="feat-img" href="https://www.motherandbaby.com/reviews/highchairs/joie-chestnut-multimode-highchair/" target="_blank" style="cursor:pointer"><img loading="lazy" src="https://images.bauerhosting.com/affiliates/sites/12/2025/12/Joie-Chestnut%E2%84%A2-Multimode-Highchair.2-1.jpg?w=480" alt="Joie Chestnut" onerror="this.parentElement.innerHTML='<span style=font-size:64px;opacity:0.3>🪑</span>'"></a>
+    <div class="feat-body">
+      <div class="featured-rank">01</div>
+      <h3>Chestnut Multimode Highchair</h3>
+      <div class="brand">Joie · 🇬🇧 英国</div>
+      <div class="desc">Mother&Baby 2026 银奖。9合1多模式，新生到6岁，榉木腿，4档倾斜。</div>
+      <div class="feat-meta">
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <span>📅 2026</span><span>🏆 银奖</span>
+          <span class="chip chip-warm">🔥 热度高</span>
+        </div>
+        <div style="text-align:right"><div class="price-tag">£120</div><a class="source-link" href="https://www.motherandbaby.com/reviews/highchairs/joie-chestnut-multimode-highchair/" target="_blank">查看详情 →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card card-product">
+    <div class="prod-img" style="font-size:48px;color:#C5B9B0;display:flex;align-items:center;justify-content:center">🪑</div>
+    <div class="card-body">
+      <div class="prod-header"><div><h3>卡曼 KC606 多功能餐椅</h3><div class="brand">karmababy · 🇨🇳</div></div><div class="price-tag">¥398</div></div>
+      <div class="meta"><span>📅 2026</span><span>⭐ 4.6</span></div>
+      <div class="desc">5合1多功能，可折叠，双层餐盘，0-6岁适用。</div>
+      <div class="card-footer">
+        <div><span class="chip chip-green">天猫热销</span><span class="chip chip-cool">天猫</span></div>
+        <a class="source-link" href="https://detail.tmall.com/item.htm?id=733857648002" target="_blank">天猫 →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card card-product">
+    <div class="prod-img" style="font-size:48px;color:#C5B9B0;display:flex;align-items:center;justify-content:center">🍽️</div>
+    <div class="card-body">
+      <div class="prod-header"><div><h3>Puggle Snack & Play 7-in-1</h3><div class="brand">Puggle · 🇬🇧</div></div><div class="price-tag">£99.95</div></div>
+      <div class="meta"><span>📅 2026</span><span>🏆 铜奖</span></div>
+      <div class="desc">7合1从餐椅到游戏桌，乐高兼容桌面。</div>
+      <div class="card-footer">
+        <div><span class="chip chip-warm">🔥 热度高</span><span class="chip chip-cool">Mother&Baby</span></div>
+        <a class="source-link" href="https://www.motherandbaby.com/reviews/highchairs/puggle-snack-and-play-7-in-1-highchair-review/" target="_blank">查看详情 →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card card-product">
+    <div class="prod-img" style="font-size:48px;color:#C5B9B0;display:flex;align-items:center;justify-content:center">🎒</div>
+    <div class="card-body">
+      <div class="prod-header"><div><h3>美高熊 便携折叠餐椅</h3><div class="brand">美高熊 · 🇨🇳</div></div><div class="price-tag">¥259</div></div>
+      <div class="meta"><span>📅 2026</span><span>⭐ 4.4</span></div>
+      <div class="desc">超轻折叠，外出便携，PU易清洁坐垫，天猫新品榜TOP10。</div>
+      <div class="card-footer">
+        <div><span class="chip chip-green">新上架</span><span class="chip chip-cool">天猫</span></div>
+        <a class="source-link" href="#" target="_blank">天猫 →</a>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ═══════ 成长椅 ═══════ -->
+<div class="category-panel" id="panel-growing"><div class="bento">
+
+  <div class="bento-card card-stats">
+    <div class="stat-block"><div class="num">5</div><div class="lbl">新品</div></div>
+    <div class="stat-block"><div class="num">2</div><div class="lbl">重点</div></div>
+    <div class="stat-block"><div class="num">¥399-2,800</div><div class="lbl">价格范围</div></div>
+    <div class="stat-block"><div class="num">4</div><div class="lbl">渠道</div></div>
+  </div>
+
+  <div class="bento-card card-summary">
+    <div class="icon-wrap">🔍</div><div class="info"><h4>调研渠道</h4><div class="big-text">天猫 · Amazon · 小红书 · iF Design</div></div>
+  </div>
+  <div class="bento-card card-summary">
+    <div class="icon-wrap">📊</div><div class="info"><h4>趋势</h4><div class="big-text">实木极简 + 人机工学获奖产品增多</div></div>
+  </div>
+
+  <div class="bento-card card-featured">
+    <div class="feat-img" style="font-size:64px;opacity:0.3;display:flex;align-items:center;justify-content:center">🌱</div>
+    <div class="feat-body">
+      <div class="featured-rank">01</div>
+      <h3>Slow Growth Chair 2026</h3>
+      <div class="brand">Slow · 🇯🇵 日本</div>
+      <div class="desc">iF Design Award 2026。白蜡木手工打造，无极调节，6个月用到成人。</div>
+      <div class="feat-meta">
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <span>🏆 iF Design 2026</span><span>⭐ 4.9</span>
+          <span class="chip chip-warm">🔥 热度高</span>
+        </div>
+        <div style="text-align:right"><div class="price-tag">¥2,800</div><a class="source-link" href="#" target="_blank">iF Design →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card card-product">
+    <div class="prod-img" style="font-size:48px;color:#C5B9B0;display:flex;align-items:center;justify-content:center">🪵</div>
+    <div class="card-body">
+      <div class="prod-header"><div><h3>SAGA 成长椅 · 黑橡木版</h3><div class="brand">Oaklings · 🇫🇮</div></div><div class="price-tag">€300</div></div>
+      <div class="desc">黑橡木实木，可拆T型横杆，黄铜铭牌。</div>
+      <div class="card-footer">
+        <div><span class="chip chip-green">新上架</span></div>
+        <a class="source-link" href="#" target="_blank">Amazon →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card card-product">
+    <div class="prod-img" style="font-size:48px;color:#C5B9B0;display:flex;align-items:center;justify-content:center">🧒</div>
+    <div class="card-body">
+      <div class="prod-header"><div><h3>HAG Capisco Puls 儿童椅</h3><div class="brand">Flokk · 🇳🇴</div></div><div class="price-tag">¥2,499</div></div>
+      <div class="desc">鞍形座面+动态坐姿，红点设计奖。</div>
+      <div class="card-footer">
+        <div><span class="chip chip-warm">🔥</span></div>
+        <a class="source-link" href="#" target="_blank">小红书 →</a>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ═══════ 增高椅 ═══════ -->
+<div class="category-panel" id="panel-booster"><div class="bento">
+
+  <div class="bento-card card-stats">
+    <div class="stat-block"><div class="num">5</div><div class="lbl">新品</div></div>
+    <div class="stat-block"><div class="num">1</div><div class="lbl">重点</div></div>
+    <div class="stat-block"><div class="num">¥199-3,999</div><div class="lbl">价格范围</div></div>
+    <div class="stat-block"><div class="num">4</div><div class="lbl">渠道</div></div>
+  </div>
+
+  <div class="bento-card card-summary">
+    <div class="icon-wrap">🔍</div><div class="info"><h4>调研渠道</h4><div class="big-text">Amazon · 天猫 · 小红书 · Kickstarter</div></div>
+  </div>
+  <div class="bento-card card-summary">
+    <div class="icon-wrap">📊</div><div class="info"><h4>趋势</h4><div class="big-text">便携折叠 + 智能升降功能成为亮点</div></div>
+  </div>
+
+  <div class="bento-card card-featured">
+    <div class="feat-img" style="font-size:64px;opacity:0.3;display:flex;align-items:center;justify-content:center">📏</div>
+    <div class="feat-body">
+      <div class="featured-rank">01</div>
+      <h3>Axkid Up · 升降增高座椅</h3>
+      <div class="brand">Axkid · 🇸🇪 瑞典</div>
+      <div class="desc">全球首款可升降增高座椅，4-12岁全覆盖，ADAC 2026满分。</div>
+      <div class="feat-meta">
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <span>📅 2026</span><span>⭐ 4.9</span>
+          <span class="chip chip-warm">🔥 热度高</span>
+        </div>
+        <div style="text-align:right"><div class="price-tag">£399</div><a class="source-link" href="https://axkid.com/uk/product/up/" target="_blank">Axkid 官网 →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card card-product">
+    <div class="prod-img" style="font-size:48px;color:#C5B9B0;display:flex;align-items:center;justify-content:center">✈️</div>
+    <div class="card-body">
+      <div class="prod-header"><div><h3>mifold hifold Fit-and-Fold</h3><div class="brand">mifold · 🇮🇱</div></div><div class="price-tag">$89</div></div>
+      <div class="desc">可折叠至书本大小，租车旅行神器。</div>
+      <div class="card-footer">
+        <div><span class="chip chip-warm">🔥</span></div>
+        <a class="source-link" href="#" target="_blank">Kickstarter →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card card-product">
+    <div class="prod-img" style="font-size:48px;color:#C5B9B0;display:flex;align-items:center;justify-content:center">📦</div>
+    <div class="card-body">
+      <div class="prod-header"><div><h3>Bombol Ru 便携2合1餐椅</h3><div class="brand">Bombol · 🇧🇪</div></div><div class="price-tag">HK$629</div></div>
+      <div class="desc">1.95kg折叠至书本大小，EPDA设计奖。</div>
+      <div class="card-footer">
+        <div><span class="chip chip-green">新上架</span></div>
+        <a class="source-link" href="https://bombol.com" target="_blank">官网 →</a>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+<div class="footer">
+  新品调研日报 · 每日 10:00 自动更新<br>
+  <div class="source-bar">
+    <span class="source-tag">Amazon</span><span class="source-tag">天猫</span><span class="source-tag">小红书</span><span class="source-tag">B站</span><span class="source-tag">Mother&Baby</span><span class="source-tag">iF Design</span>
+  </div>
+</div>
+
+</div>
+
+<script>
+function switchTab(id){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  var btn=document.querySelector('.tab-btn[onclick*="'+id+'"]');if(btn)btn.classList.add('active');
+  document.querySelectorAll('.category-panel').forEach(p=>p.classList.remove('active'));
+  var panel=document.getElementById('panel-'+id);if(panel)panel.classList.add('active');
+}
+</script>
+</body>
+</html>
